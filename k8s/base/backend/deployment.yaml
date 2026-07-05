@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: rhtech-backend
-        version: v1  # ESSENCIAL para o Istio rotear corretamente
+        version: v1 
     spec:
       containers:
       - name: backend
@@ -21,6 +21,18 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 15       
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
         env:
         - name: DB_HOST
           value: "rhtech-db"
