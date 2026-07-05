@@ -40,6 +40,3 @@ jobs:
           git add k8s/base/backend/deployment.yaml
           git commit -m "chore: update backend image to ${{ github.sha }}"
           git push
-
-
-# Versao Corrigida 2026-07-05
