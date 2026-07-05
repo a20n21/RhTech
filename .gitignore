@@ -7,3 +7,4 @@ dist/
 .docker/
 k8s/overlays/dev/temp.yaml
 postgres_data/
+node_modules/
