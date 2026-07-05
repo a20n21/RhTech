@@ -24,7 +24,7 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: seu-usuario/rhtech-backend:${{ github.sha }}
+          tags: matias1210/rhtech-backend:${{ github.sha }}
 
       - name: Update Kubernetes Manifest
         run: |
