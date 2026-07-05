@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: rhtech-backend
+        version: v1  # ESSENCIAL para o Istio rotear corretamente
     spec:
       containers:
       - name: backend
