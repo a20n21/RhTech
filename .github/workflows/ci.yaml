@@ -34,7 +34,7 @@ jobs:
       - name: Update Kubernetes Manifest
         if: github.event_name == 'push' && !contains(github.event.head_commit.message, 'chore: update backend image')
         run: |
-          sed -i "s|image: matias1210/rhtech-backend:.*|image: matias1210/rhtech-backend:${{ github.sha }}|g" k8s/base/backend/deployment.yaml
+          sed -i "s|image: rhtech-backend:.*|image: matias1210/rhtech-backend:${{ github.sha }}|g" k8s/base/backend/deployment.yaml
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
           git add k8s/base/backend/deployment.yaml
