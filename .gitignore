@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.*
+.DS_Store
+.vite/
+.docker/
+k8s/overlays/dev/temp.yaml
+postgres_data/

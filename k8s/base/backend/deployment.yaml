@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: rhtech-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rhtech-backend
+  template:
+    metadata:
+      labels:
+        app: rhtech-backend
+    spec:
+      containers:
+      - name: backend
+        image: rhtech-backend:__IMAGE_TAG__
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOST
+          value: "rhtech-db"
+
