@@ -1,18 +1,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../base
+- ../../base
 
 images:
-  - name: matias1210/rhtech-backend # O nome da imagem base que está no seu Deployment
-    newName: matias1210/rhtech-backend # O nome do repositório no Docker Hub
-    newTag: latest # O pipeline vai sobrescrever isso
+- name: matias1210/rhtech-backend
+  newTag: 9c7a5d4e400fb793b18f48fcef7fdcb4511b8f99
 
 patches:
-  - target:
-      kind: Deployment
-      name: backend-deployment
-    patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
+- patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 1
+  target:
+    kind: Deployment
+    name: backend-deployment
