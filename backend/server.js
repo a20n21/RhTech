@@ -4,29 +4,28 @@ import pool from './src/db.js';
 import authRoutes from './src/routes/auth.routes.js';
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 
+// Apenas health check, sem banco de dados
 app.get('/health', (req, res) => {
     res.status(200).send('OK');
 });
 
-// A rota /ready agora indica apenas que o app está ativo
-// Isso impede o Kubernetes de tentar reiniciar o pod por falha de conexão temporária
+// Apenas ready check, sem banco de dados
 app.get('/ready', (req, res) => {
     res.status(200).send('Ready');
 });
 
 app.use('/api/auth', authRoutes);
 
+// O banco SÓ é acessado aqui, quando alguém realmente chama esta rota
 app.get('/test-db', async (req, res) => {
     try {
         const result = await pool.query('SELECT NOW()');
         res.json({ success: true, time: result.rows[0] });
     } catch (err) {
-        console.error('Erro na query de teste:', err.message);
-        res.status(500).json({ error: 'Database connection error' });
+        res.status(500).json({ error: err.message });
     }
 });
 
