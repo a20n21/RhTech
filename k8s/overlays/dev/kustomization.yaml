@@ -2,7 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
-# Aqui você pode mudar o nome da imagem, adicionar labels extras ou mudar o número de réplicas
+
+images:
+  - name: matias1210/rhtech-backend # O nome da imagem base que está no seu Deployment
+    newName: matias1210/rhtech-backend # O nome do repositório no Docker Hub
+    newTag: latest # O pipeline vai sobrescrever isso
+
 patches:
   - target:
       kind: Deployment
