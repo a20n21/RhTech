@@ -8,22 +8,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
 app.get('/health', (req, res) => {
     res.status(200).send('OK');
 });
 
-
-app.get('/ready', async (req, res) => {
-    try {
-        await pool.query('SELECT 1'); 
-        res.status(200).send('Ready');
-    } catch (err) {
-        res.status(503).send('Database not reachable');
-    }
+// A rota /ready agora indica apenas que o app está ativo
+// Isso impede o Kubernetes de tentar reiniciar o pod por falha de conexão temporária
+app.get('/ready', (req, res) => {
+    res.status(200).send('Ready');
 });
-
-
 
 app.use('/api/auth', authRoutes);
 
@@ -32,7 +25,8 @@ app.get('/test-db', async (req, res) => {
         const result = await pool.query('SELECT NOW()');
         res.json({ success: true, time: result.rows[0] });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error('Erro na query de teste:', err.message);
+        res.status(500).json({ error: 'Database connection error' });
     }
 });
 

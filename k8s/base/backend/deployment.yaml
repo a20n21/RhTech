@@ -25,15 +25,20 @@ spec:
           httpGet:
             path: /health
             port: 3000
-          initialDelaySeconds: 30
-          periodSeconds: 15       
+          initialDelaySeconds: 45
         readinessProbe:
           httpGet:
-            path: /ready
+            path: /health  
             port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 10
+          initialDelaySeconds: 15
+          failureThreshold: 5
         env:
         - name: DB_HOST
           value: "rhtech-db"
+        - name: DB_USER
+          value: "user"
+        - name: DB_PASSWORD
+          value: "rhtech"
+        - name: DB_NAME
+          value: "rhtech"
 

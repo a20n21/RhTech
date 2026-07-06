@@ -17,6 +17,7 @@ spec:
       containers:
       - name: postgres
         image: postgres:15-alpine
+        args: ["-c", "listen_addresses=*"]
         ports:
         - containerPort: 5432
         env:
@@ -25,4 +26,4 @@ spec:
         - name: POSTGRES_PASSWORD
           value: "rhtech"
         - name: POSTGRES_DB
-          value: "rhtechdb"
+          value: "rhtech"
