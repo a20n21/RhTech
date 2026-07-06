@@ -34,11 +34,11 @@ spec:
           failureThreshold: 5
         env:
         - name: DB_HOST
-          value: "rhtech-db" # Nome do seu Service K8s
+          value: "192.168.100.14" 
         - name: DB_USER
-          value: "admin"     # Mudei para 'admin' para bater com o docker-compose
+          value: "admin"
         - name: DB_PASSWORD
-          value: "secretpassword" # Mudei para 'secretpassword'
+          value: "rhtech"
         - name: DB_NAME
-          value: "rhtech_db" # Mudei para 'rhtech_db'
+          value: "rhtech_db"
 
