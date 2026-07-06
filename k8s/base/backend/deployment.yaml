@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - name: backend
-        image: matias1210/rhtech-backend
-        imagePullPolicy: IfNotPresent
+        image: matias1210/rhtech-backend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         livenessProbe:
