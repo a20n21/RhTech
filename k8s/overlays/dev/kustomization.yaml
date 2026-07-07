@@ -5,7 +5,7 @@ resources:
 
 images:
 - name: matias1210/rhtech-backend
-  newTag: 839f3ef35c3c6a3373b918209b2baf75367ec41f
+  newTag: 01aad561ce2eeaf79b7b7df53adf37e6db2dfa14
 
 patches:
 - patch: |-
