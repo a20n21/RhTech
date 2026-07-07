@@ -6,10 +6,10 @@ resources:
 images:
 - name: matias1210/rhtech-backend
   newName: matias1210/rhtech-backend
-  newTag: 0b37cdcf4504555c35731f5b6d821e5b3a260d68
+  newTag: ff6a32c9f61823bf7c18c9eaf3d612a83c3b4aea
 - name: matias1210/rhtech-frontend
   newName: matias1210/rhtech-frontend
-  newTag: 0b37cdcf4504555c35731f5b6d821e5b3a260d68
+  newTag: ff6a32c9f61823bf7c18c9eaf3d612a83c3b4aea
 
 patches:
 - patch: |-
