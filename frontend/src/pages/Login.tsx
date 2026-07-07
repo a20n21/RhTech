@@ -15,7 +15,8 @@ export default function Login() {
     setStatus('');
     
     try {
-      const response = await axios.post('http://172.19.0.2:30892/api/auth/login', {
+      // Ajustado de IP fixo para rota relativa para funcionar dinamicamente via Ingress
+      const response = await axios.post('/api/auth/login', {
         email,
         password
       });
