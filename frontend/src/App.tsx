@@ -4,7 +4,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Funcionarios from './pages/Funcionarios';
 import Vagas from './pages/Vagas';
-import PlaceholderPage from './pages/PlaceholderPage'; // Importando o novo componente
+import PlaceholderPage from './pages/PlaceholderPage';
 
 function App() {
   return (
