@@ -95,7 +95,7 @@ export default function Login() {
   );
 }
 
-// Estilos puros em objetos JavaScript (sem dependência de Tailwind)
+// Estiloss puros em objetos JavaScript (sem dependência de Tailwind)
 const styles = {
   container: {
     minHeight: '100vh',
