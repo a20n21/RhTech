@@ -15,7 +15,7 @@ export default function Login() {
     setStatus('');
     
     try {
-      // Ajustado de IP fixo para rota relativa para funcionar dinamicamente via Ingress
+      // Usando rota relativa para que o Ingress faça o roteamento dinâmico em produção
       const response = await axios.post('/api/auth/login', {
         email,
         password
@@ -95,7 +95,7 @@ export default function Login() {
   );
 }
 
-// Estiloss puros em objetos JavaScript (sem dependência de Tailwind)
+// Estilos puros em objetos JavaScript (sem dependência de Tailwind)
 const styles = {
   container: {
     minHeight: '100vh',
