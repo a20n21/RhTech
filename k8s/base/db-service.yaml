@@ -3,9 +3,8 @@ kind: Service
 metadata:
   name: rhtech-db
 spec:
+  ports:
+  - port: 5432
+    targetPort: 5432
   selector:
     app: rhtech-db
-  ports:
-    - protocol: TCP
-      port: 5432
-      targetPort: 5432
