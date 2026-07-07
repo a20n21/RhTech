@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: rhtech-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rhtech-frontend
+  template:
+    metadata:
+      labels:
+        app: rhtech-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: rhtech_frontend:latest
+        ports:
+        - containerPort: 5173

@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
   - backend/deployment.yaml
   - backend/service.yaml
+  - frontend/deployment.yaml
+  - frontend/service.yaml
   - db-deployment.yaml
   - db-service.yaml
   - istio/istio-gateway.yaml
