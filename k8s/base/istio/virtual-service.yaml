@@ -14,7 +14,6 @@ spec:
     route:
     - destination:
         host: backend-service
-        subset: v1
       weight: 100
   - match:
     - uri:
