@@ -13,5 +13,6 @@ spec:
     matchNames:
       - istio-system
   endpoints:
-  - port: status-port 
+  - port: status-port
+    path: /stats/prometheus
     interval: 15s
