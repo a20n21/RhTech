@@ -8,11 +8,10 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: istio-ingressgateway
+      istio: ingressgateway
   namespaceSelector:
     matchNames:
       - istio-system
   endpoints:
-  - targetPort: 15020
-    path: /stats/prometheus 
+  - port: status-port 
     interval: 15s
