@@ -13,7 +13,7 @@ spec:
     matchNames:
       - istio-system
   endpoints:
-  - port: status-port
+  - port: http-envoy-prom
     path: /stats/prometheus
     interval: 15s
     scheme: http
