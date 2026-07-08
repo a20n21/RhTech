@@ -16,3 +16,4 @@ spec:
   - port: status-port
     path: /stats/prometheus
     interval: 15s
+    scheme: http
