@@ -4,14 +4,15 @@ metadata:
   name: istio-mesh
   namespace: istio-system
   labels:
-    release: kube-prometheus-stack 
+    release: kube-prometheus-stack
 spec:
   selector:
     matchLabels:
-      app: istio-ingressgateway 
+      app: istio-ingressgateway
   namespaceSelector:
     matchNames:
       - istio-system
   endpoints:
-  - port: status-port  
+  - targetPort: 15020
+    path: /stats/prometheus 
     interval: 15s
