@@ -6,11 +6,8 @@ resources:
 images:
 - name: matias1210/rhtech-backend
   newName: matias1210/rhtech-backend
-  newTag: 6740e59e4d47c318b95dbf6543ce33c09827baff
 - name: matias1210/rhtech-frontend
   newName: matias1210/rhtech-frontend
-  # O seu CI Pipeline irá sobrescrever esta linha automaticamente, 
-  # então não precisamos colocar 'fix-login' aqui agora.
 
 patches:
 - patch: |-
