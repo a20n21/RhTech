@@ -9,7 +9,11 @@ images:
   newTag: 91b049bbbb40e638b1bf517a5d76b79baa80918e
 - name: matias1210/rhtech-frontend
   newName: matias1210/rhtech-frontend
+<<<<<<< HEAD
   newTag: 91b049bbbb40e638b1bf517a5d76b79baa80918e
+=======
+  newTag: fix-login
+>>>>>>> 3d0b345 (fix: atualizando deployment para porta 80 e nginx)
 
 patches:
 - patch: |-

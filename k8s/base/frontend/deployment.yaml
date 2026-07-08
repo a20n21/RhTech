@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: matias1210/rhtech-frontend:v1
+        image: matias1210/rhtech-frontend:fix-login 
         ports:
-        - containerPort: 5173
+        - containerPort: 80 
