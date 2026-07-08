@@ -10,3 +10,4 @@ resources:
   - istio/istio-gateway.yaml
   - istio/destination-rule.yaml
   - istio/virtual-service.yaml
+  - istio-servicemonitor.yaml
