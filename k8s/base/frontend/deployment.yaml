@@ -17,11 +17,11 @@ spec:
       containers:
       - name: frontend
 <<<<<<< HEAD
-        image: matias1210/rhtech-frontend:fix-login 
+        image: matias1210/rhtech-frontend:658311eddf75b99aa32e0e6fe7fc39be550c7d09
         ports:
         - containerPort: 80 
 =======
-        image: matias1210/rhtech-frontend:f4263967a38f15e0b3e73f94ab206c8514ae8720
+        image: matias1210/rhtech-frontend:658311eddf75b99aa32e0e6fe7fc39be550c7d09
         imagePullPolicy: Always                    
         ports:
         - containerPort: 80
