@@ -30,34 +30,38 @@ export default function Login() {
     <div style={styles.page}>
       <div style={styles.card}>
         <div style={styles.header}>
-          <div style={styles.glowLogo}>RH</div>
-          <h1 style={styles.title}>Bem-vindo ao RhTech</h1>
-          <p style={styles.subtitle}>Gerenciamento inteligente para sua equipe</p>
+          <div style={styles.logo}>RH</div>
+          <h1 style={styles.title}>RhTech Portal</h1>
+          <p style={styles.subtitle}>Acesso corporativo seguro</p>
         </div>
 
         <form onSubmit={handleLogin} style={styles.form}>
-          <input 
-            type="email" 
-            placeholder="E-mail corporativo" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
-            style={styles.input}
-          />
+          <div style={styles.inputWrapper}>
+            <input 
+              type="email" 
+              placeholder="seu.email@empresa.com" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+              style={styles.input}
+            />
+          </div>
 
-          <input 
-            type="password" 
-            placeholder="Sua senha secreta" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
-            style={styles.input}
-          />
+          <div style={styles.inputWrapper}>
+            <input 
+              type="password" 
+              placeholder="••••••••" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              required 
+              style={styles.input}
+            />
+          </div>
 
           {status && <div style={styles.errorBox}>{status}</div>}
 
           <button type="submit" disabled={isLoading} style={styles.button}>
-            {isLoading ? 'Autenticando...' : 'Acessar Plataforma'}
+            {isLoading ? 'Autenticando...' : 'Entrar no sistema'}
           </button>
         </form>
       </div>
@@ -71,64 +75,70 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-    padding: '20px',
-    fontFamily: "'Inter', system-ui, sans-serif"
+    background: '#0f172a',
+    backgroundImage: 'radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%)',
+    fontFamily: "'Inter', sans-serif"
   },
   card: {
-    background: 'rgba(255, 255, 255, 0.95)',
-    padding: '48px',
-    borderRadius: '24px',
+    background: 'rgba(30, 41, 59, 0.7)',
+    backdropFilter: 'blur(20px)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    padding: '40px',
+    borderRadius: '20px',
     width: '100%',
-    maxWidth: '420px',
-    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.3)',
-    backdropFilter: 'blur(10px)'
+    maxWidth: '380px',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
   },
-  glowLogo: {
-    width: '60px',
-    height: '60px',
-    borderRadius: '16px',
-    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
-    color: 'white',
+  logo: {
+    width: '50px',
+    height: '50px',
+    background: '#3b82f6',
+    borderRadius: '12px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '24px',
-    fontWeight: '800',
-    margin: '0 auto 20px auto',
-    boxShadow: '0 10px 20px rgba(59, 130, 246, 0.3)'
+    color: 'white',
+    fontWeight: '900',
+    fontSize: '20px',
+    margin: '0 auto 20px auto'
   },
   header: { textAlign: 'center' as const, marginBottom: '32px' },
-  title: { fontSize: '28px', color: '#0f172a', margin: '0 0 8px 0', fontWeight: '800' },
-  subtitle: { fontSize: '14px', color: '#64748b', margin: 0 },
-  form: { display: 'flex', flexDirection: 'column' as const, gap: '16px' },
+  title: { fontSize: '24px', color: '#fff', margin: '0 0 8px 0', fontWeight: '700' },
+  subtitle: { fontSize: '14px', color: '#94a3b8', margin: 0 },
+  form: { display: 'flex', flexDirection: 'column' as const, gap: '20px' },
+  inputWrapper: { position: 'relative' as const },
   input: {
-    padding: '16px 20px',
-    borderRadius: '12px',
-    border: '2px solid transparent',
-    background: '#f1f5f9',
-    fontSize: '15px',
+    width: '100%',
+    padding: '14px 16px',
+    borderRadius: '10px',
+    border: '1px solid #334155',
+    background: '#0f172a',
+    color: '#fff',
+    fontSize: '14px',
     outline: 'none',
-    transition: 'all 0.3s ease'
+    boxSizing: 'border-box' as const,
+    transition: 'border-color 0.2s'
   },
   errorBox: {
-    padding: '12px',
-    background: '#fef2f2',
-    color: '#b91c1c',
-    borderRadius: '10px',
-    fontSize: '13px',
-    textAlign: 'center' as const
+    padding: '10px',
+    background: 'rgba(220, 38, 38, 0.1)',
+    color: '#f87171',
+    borderRadius: '8px',
+    fontSize: '12px',
+    textAlign: 'center' as const,
+    border: '1px solid rgba(220, 38, 38, 0.2)'
   },
   button: {
-    padding: '16px',
-    background: '#242527',
+    width: '100%',
+    padding: '14px',
+    background: '#3b82f6',
     color: 'white',
     border: 'none',
-    borderRadius: '12px',
-    fontSize: '15px',
+    borderRadius: '10px',
+    fontSize: '14px',
     fontWeight: '600',
     cursor: 'pointer',
-    transition: 'transform 0.2s, background 0.2s'
+    transition: 'background 0.2s'
   }
 };
 
