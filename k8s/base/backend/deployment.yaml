@@ -20,16 +20,16 @@ spec:
         image: matias1210/rhtech-backend:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 3000
+        - containerPort: 3001
         livenessProbe:
           httpGet:
             path: /health
-            port: 3000
+            port: 3001
           initialDelaySeconds: 45
         readinessProbe:
           httpGet:
             path: /health  
-            port: 3000
+            port: 3001
           initialDelaySeconds: 15
           failureThreshold: 5
         env:
