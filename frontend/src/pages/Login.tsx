@@ -61,7 +61,7 @@ export default function Login() {
           {status && <div style={styles.errorBox}>{status}</div>}
 
           <button type="submit" disabled={isLoading} style={styles.button}>
-            {isLoading ? 'Autenticando...' : 'Entrar no sistema'}
+            {isLoading ? 'Autenticando...' : 'Acessar o sistema'}
           </button>
         </form>
       </div>
@@ -122,7 +122,7 @@ const styles = {
   errorBox: {
     padding: '10px',
     background: 'rgba(220, 38, 38, 0.1)',
-    color: '#f87171',
+    color: '#c71313',
     borderRadius: '8px',
     fontSize: '12px',
     textAlign: 'center' as const,
