@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Funcionarios from './pages/Funcionarios';
 import Vagas from './pages/Vagas';
+import Planos from './pages/Planos'; // Importação da nova página
 import PlaceholderPage from './pages/PlaceholderPage';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/funcionarios" element={<Funcionarios />} />
           <Route path="/vagas" element={<Vagas />} />
+          
+          {/* Adicionando a rota de Planos aqui para manter a Sidebar */}
+          <Route path="/planos" element={<Planos />} />
           
           {/* Novas rotas com conteúdo fictício */}
           <Route path="/candidatos" element={<PlaceholderPage title="Candidatos" />} />
