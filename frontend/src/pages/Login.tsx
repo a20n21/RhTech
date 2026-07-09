@@ -16,38 +16,30 @@ export default function Login() {
     setStatus('');
     
     try {
-      // Usando rota relativa para que o Ingress faça o roteamento dinâmico em produção
-      const response = await axios.post('/api/auth/login', {
-        email,
-        password
-      });
+      const response = await axios.post('/api/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
       navigate('/dashboard'); 
     } catch (error: any) {
-      setStatus('Credenciais inválidas ou erro no servidor.');
+      setStatus('Credenciais inválidas. Tente novamente.');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div style={styles.container}>
+    <div style={styles.page}>
       <div style={styles.card}>
-        
-        {/* Header */}
         <div style={styles.header}>
           <div style={styles.logo}>RH</div>
           <h1 style={styles.title}>RhTech Portal</h1>
-          <p style={styles.subtitle}>Entre com suas credenciais corporativas</p>
+          <p style={styles.subtitle}>Acesso corporativo seguro</p>
         </div>
 
-        {/* Formulário */}
         <form onSubmit={handleLogin} style={styles.form}>
-          <div style={styles.inputGroup}>
-            <label style={styles.label}>E-mail Corporativo</label>
+          <div style={styles.inputWrapper}>
             <input 
               type="email" 
-              placeholder="nome@empresa.com" 
+              placeholder="seu.email@empresa.com" 
               value={email} 
               onChange={(e) => setEmail(e.target.value)} 
               required 
@@ -55,8 +47,7 @@ export default function Login() {
             />
           </div>
 
-          <div style={styles.inputGroup}>
-            <label style={styles.label}>Senha</label>
+          <div style={styles.inputWrapper}>
             <input 
               type="password" 
               placeholder="••••••••" 
@@ -67,149 +58,87 @@ export default function Login() {
             />
           </div>
 
-          {/* Erro */}
-          {status && (
-            <div style={styles.errorBox}>
-              {status}
-            </div>
-          )}
+          {status && <div style={styles.errorBox}>{status}</div>}
 
-          {/* Botão */}
-          <button 
-            type="submit" 
-            disabled={isLoading}
-            style={{
-              ...styles.button,
-              ...(isLoading ? styles.buttonDisabled : {})
-            }}
-          >
-            {isLoading ? 'Carregando...' : 'Entrar no Painel'}
+          <button type="submit" disabled={isLoading} style={styles.button}>
+            {isLoading ? 'Autenticando...' : 'Acessar o sistema'}
           </button>
         </form>
-
-        {/* Footer */}
-        <div style={styles.footer}>
-          <p style={styles.footerText}>Matias IT Consulting &copy; 2026</p>
-        </div>
       </div>
     </div>
   );
 }
 
-// Estiloss puros em objetos JavaScript (sem dependência de Tailwind)
 const styles = {
-  container: {
+  page: {
     minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: '#f8fafc',
-    fontFamily: 'system-ui, -apple-system, sans-serif',
-    padding: '20px'
+    background: '#0f172a',
+    backgroundImage: 'radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%)',
+    fontFamily: "'Inter', sans-serif"
   },
   card: {
-    background: 'white',
+    background: 'rgba(30, 41, 59, 0.7)',
+    backdropFilter: 'blur(20px)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
     padding: '40px',
-    borderRadius: '16px',
-    boxShadow: '0 10px 25px rgba(30, 41, 59, 0.05), 0 20px 48px rgba(30, 41, 59, 0.05)',
+    borderRadius: '20px',
     width: '100%',
-    maxWidth: '400px',
-    border: '1px solid #f1f5f9',
-    boxSizing: 'border-box' as const
-  },
-  header: {
-    textAlign: 'center' as const,
-    marginBottom: '32px'
+    maxWidth: '380px',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
   },
   logo: {
-    inlineFlex: 'display',
-    width: '48px',
-    height: '48px',
-    lineHeight: '48px',
+    width: '50px',
+    height: '50px',
+    background: '#3b82f6',
     borderRadius: '12px',
-    background: '#0f172a',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     color: 'white',
-    fontWeight: 'bold',
-    fontSize: '18px',
-    margin: '0 auto 12px auto',
-    textAlign: 'center' as const
+    fontWeight: '900',
+    fontSize: '20px',
+    margin: '0 auto 20px auto'
   },
-  title: {
-    fontSize: '24px',
-    fontWeight: '700',
-    color: '#0f172a',
-    margin: '0 0 6px 0',
-    letterSpacing: '-0.5px'
-  },
-  subtitle: {
-    fontSize: '14px',
-    color: '#64748b',
-    margin: 0
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '20px'
-  },
-  inputGroup: {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '8px'
-  },
-  label: {
-    fontSize: '12px',
-    fontWeight: '600',
-    color: '#475569',
-    textTransform: 'uppercase' as const,
-    letterSpacing: '0.5px'
-  },
+  header: { textAlign: 'center' as const, marginBottom: '32px' },
+  title: { fontSize: '24px', color: '#fff', margin: '0 0 8px 0', fontWeight: '700' },
+  subtitle: { fontSize: '14px', color: '#94a3b8', margin: 0 },
+  form: { display: 'flex', flexDirection: 'column' as const, gap: '20px' },
+  inputWrapper: { position: 'relative' as const },
   input: {
-    padding: '12px 16px',
-    background: '#f8fafc',
-    border: '1px solid #e2e8f0',
+    width: '100%',
+    padding: '14px 16px',
     borderRadius: '10px',
+    border: '1px solid #334155',
+    background: '#0f172a',
+    color: '#fff',
     fontSize: '14px',
-    color: '#0f172a',
     outline: 'none',
-    transition: 'all 0.2s ease',
-    boxSizing: 'border-box' as const
+    boxSizing: 'border-box' as const,
+    transition: 'border-color 0.2s'
   },
   errorBox: {
-    padding: '12px',
-    background: '#fef2f2',
-    border: '1px solid #fee2e2',
-    borderRadius: '10px',
-    color: '#ef4444',
-    fontSize: '13px',
-    fontWeight: '500',
-    textAlign: 'center' as const
+    padding: '10px',
+    background: 'rgba(220, 38, 38, 0.1)',
+    color: '#c71313',
+    borderRadius: '8px',
+    fontSize: '12px',
+    textAlign: 'center' as const,
+    border: '1px solid rgba(220, 38, 38, 0.2)'
   },
   button: {
+    width: '100%',
     padding: '14px',
-    background: '#0f172a',
+    background: '#3b82f6',
     color: 'white',
     border: 'none',
     borderRadius: '10px',
-    fontWeight: '600',
     fontSize: '14px',
+    fontWeight: '600',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
-    boxShadow: '0 4px 12px rgba(15, 23, 42, 0.15)'
-  },
-  buttonDisabled: {
-    background: '#94a3b8',
-    cursor: 'not-allowed'
-  },
-  footer: {
-    marginTop: '32px',
-    paddingTop: '20px',
-    borderTop: '1px solid #f1f5f9',
-    textAlign: 'center' as const
-  },
-  footerText: {
-    fontSize: '12px',
-    color: '#94a3b8',
-    margin: 0
+    transition: 'background 0.2s'
   }
 };
-// Cache breaker: 1783466612
+

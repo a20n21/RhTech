@@ -32,7 +32,7 @@ export default function Layout() {
           <Link to="/perfil" style={linkStyle('/perfil')}><User size={20} /> Perfil</Link>
         </nav>
 
-        <button style={{ background: 'transparent', border: 'none', color: '#ef4444', display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
+        <button style={{ background: 'transparent', border: 'none', color: '#a01616', display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
           <LogOut size={20} /> Sair
         </button>
       </aside>
