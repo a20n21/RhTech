@@ -7,4 +7,13 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://backend:3002', // Nome do serviço no seu docker-compose
+        changeOrigin: true,
+        secure: false,
+      }
+    }
+  }
 })
