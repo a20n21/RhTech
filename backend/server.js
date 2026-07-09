@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import pool from './src/db.js';
 import authRoutes from './src/routes/auth.routes.js';
+import planosRoutes from './src/routes/planos.routes.js'; // Importando a nova rota de planos
 
 const app = express();
 app.use(cors());
@@ -18,6 +19,7 @@ app.get('/ready', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/planos', planosRoutes); // Registrando a rota de planos
 
 // O banco SÓ é acessado aqui, quando alguém realmente chama esta rota
 app.get('/test-db', async (req, res) => {
@@ -29,6 +31,6 @@ app.get('/test-db', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
+app.listen(3001, () => {
+    console.log('Servidor rodando na porta 3001');
 });

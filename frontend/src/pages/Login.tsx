@@ -61,7 +61,7 @@ export default function Login() {
           {status && <div style={styles.errorBox}>{status}</div>}
 
           <button type="submit" disabled={isLoading} style={styles.button}>
-            {isLoading ? 'Autenticando...' : 'Acessar o sistema'}
+            {isLoading ? 'Autenticando...' : 'Entrar no sistema'}
           </button>
         </form>
       </div>

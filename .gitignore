@@ -1,10 +1,25 @@
+# Dependências
 node_modules/
-dist/
+npm-debug.log*
+yarn-error.log*
+
+# Variáveis de Ambiente (NUNCA subir para o Git)
 .env
 .env.*
-.DS_Store
+!.env.example
+
+# Build e Cache
+dist/
 .vite/
-.docker/
-k8s/overlays/dev/temp.yaml
+
+# Volumes e Infraestrutura Local
 postgres_data/
-node_modules/
+.docker/
+
+# Kubernetes / GitOps
+k8s/overlays/dev/temp.yaml
+*kubeconfig*
+*-secret.yaml
+
+# Arquivos de Sistema Operacional
+.DS_Store
