@@ -1,15 +1,29 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
 jobs:
   build-backend:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v4
+      
       - uses: dorny/paths-filter@v3
-        id: filter
+        id: filter-back
         with:
           filters: |
             src: ['backend/**']
-      - if: steps.filter.outputs.src == 'true'
+            
+      - if: steps.filter-back.outputs.src == 'true'
+        name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - if: steps.filter-back.outputs.src == 'true'
         name: Build and Push Backend
         uses: docker/build-push-action@v5
         with:
@@ -21,15 +35,23 @@ jobs:
 
   build-frontend:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v4
+      
       - uses: dorny/paths-filter@v3
-        id: filter
+        id: filter-front
         with:
           filters: |
             src: ['frontend/**']
-      - if: steps.filter.outputs.src == 'true'
+            
+      - if: steps.filter-front.outputs.src == 'true'
+        name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - if: steps.filter-front.outputs.src == 'true'
         name: Build and Push Frontend
         uses: docker/build-push-action@v5
         with:
